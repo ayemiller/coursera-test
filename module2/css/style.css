@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  background-color: #999999;
+  border: 1px solid black;
+  float: left;
+  width: 31.33%;  
+}
+
+#menuItemOne, #menuItemThree {
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+  width: 31.33%;
+}
+
+p.itemContent {
+  clear: both;
+  cursor: ns-resize;
+  height: 200px;
+  overflow: hidden;
+  padding: 20px;
+}
+
+p.itemContent:hover {
+  overflow: auto;
+  padding-right: 5px;
+}
+
+h1 {
+  font-size: 1em;
+  padding-bottom: 25px;
+  padding-top: 35px;
+}
+
+.itemDescription{
+  display: none; 
+}
+
+.itemTitle{ 
+  display: block;
+}
+
+h2 {
+  border-bottom:  1px solid black;
+  border-left: 1px solid black;
+  float: right;
+  font-size: 125%;
+  padding-left: 5%;
+  padding-right: 5%;
+  text-align: center;
+  width: 125px;
+}
+
+.titleOneStyle h2 {
+  background-color: #d59898;
+}
+
+.titleTwoStyle h2 {
+  background-color: #c14543;
+  color: white;
+}
+
+.titleThreeStyle h2 {
+  background-color: #e5d198;
+}
+
+#normalHeader{ 
+  display: block;
+  font-size: 175%;
+  text-align: center;
+}
+
+#mobileHeader{ 
+  display: none; 
+}
+
+/* tablet view */
+@media (min-width: 768px) and (max-width: 991px) {
+
+  #menuItemOne {
+    margin-left: 1.5%;
+    margin-right: .75%;
+    width: 47.75%;
+  }
+
+  #menuItemTwo {
+    margin-left: .75%;
+    margin-right: 1.5%;
+    width: 47.75%;
+  }
+
+  #menuItemThree {
+    margin: 1.5%;
+    width: 97%;
+  }
+
+}
+
+
+/* mobile view */
+@media (max-width: 767px) {
+
+  h1 { 
+    font: bold 135% 'Times New Roman', serif;
+  }
+
+  h2 {
+    border-left: 0px solid black;
+    width: 100%;
+  }
+
+  #normalHeader{ 
+    display: none; 
+  }
+
+  #mobileHeader{  
+    display: block; 
+    margin-left: 2%;
+    padding-left: 2%;
+    text-align: left;
+  }
+
+  .itemDescription{ 
+    display: block; 
+  }
+
+  .itemTitle{ 
+    display: none; 
+  }
+
+  #menuItemOne, #menuItemTwo, #menuItemThree {
+    margin: 2%;
+    margin-left: 4%;
+    margin-right: 4%;
+    width: 92%;
+  }
+
+}
