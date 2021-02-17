@@ -42,12 +42,28 @@ section {
 
 /* small/tablet view */
 @media (min-width: 768px) and (max-width: 991px) {
-.col-sm-6:nth-child(2) {padding-left: 0px;padding-right:15px;}
+  .col-sm-6:nth-child(1) {
+    padding-left: 15px;
+    padding-right:7.5px;
+  }
+  .col-sm-6:nth-child(2) {
+    padding-left: 7.5px;
+    padding-right:15px;
+  }
 }
 
 /* medium/desktop view */
 @media (min-width: 992px) {
-.col-md-4:nth-child(1) {padding-left: 15px;padding-right: 5px;}  
-.col-md-4:nth-child(2) {padding-left: 10px;padding-right: 10px;}
-.col-md-4:nth-child(3) {padding-left: 5px;padding-right: 15px;}
+  .col-md-4:nth-child(1) {
+    padding-left: 15px;
+    padding-right: 5px;
+  }  
+  .col-md-4:nth-child(2) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .col-md-4:nth-child(3) {
+    padding-left: 5px;
+    padding-right: 15px;
+  }
 }
