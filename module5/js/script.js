@@ -22,7 +22,7 @@ var menuItemsUrl =
   "https://davids-restaurant.herokuapp.com/menu_items.json?category=";
 var menuItemsTitleHtml = "snippets/menu-items-title.html";
 var menuItemHtml = "snippets/menu-item.html";
-
+var aboutRestaurantHtml = "snippets/about.html"
 // Convenience function for inserting innerHTML for 'select'
 var insertHtml = function (selector, html) {
   var targetElem = document.querySelector(selector);
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
   allCategoriesUrl,
-  [...], // ***** <---- TODO: STEP 1: Substitute [...] ******
+  buildAndShowHomeHTML, // ***** <---- TODO: STEP 1: Substitute [...] ******
   true); // Explicitly setting the flag to get JSON from server processed into an object literal
 });
 // *** finish **
@@ -102,6 +102,7 @@ function buildAndShowHomeHTML (categories) {
       // Pay attention to what type of data that function returns vs what the chosenCategoryShortName
       // variable's name implies it expects.
       // var chosenCategoryShortName = ....
+      var chosenCategoryShortName = chooseRandomCategory(categories).short_name;
 
 
       // TODO: STEP 3: Substitute {{randomCategoryShortName}} in the home html snippet with the
@@ -116,12 +117,13 @@ function buildAndShowHomeHTML (categories) {
       // it into the home html snippet.
       //
       // var homeHtmlToInsertIntoMainPage = ....
-
+      var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", "'".concat(chosenCategoryShortName, "'"));
 
       // TODO: STEP 4: Insert the the produced HTML in STEP 3 into the main page
       // Use the existing insertHtml function for that purpose. Look through this code for an example
       // of how to do that.
       // ....
+      insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
 
     },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
@@ -146,6 +148,13 @@ dc.loadMenuCategories = function () {
     buildAndShowCategoriesHTML);
 };
 
+dc.loadAboutRestaurant = function () {
+  showLoading("#main-content");
+  $ajaxUtils.sendGetRequest(
+    aboutRestaurantHtml,
+    buildAndShowAboutSnippetHTML,
+    false);
+};
 
 // Load the menu items view
 // 'categoryShort' is a short_name for a category
@@ -211,7 +220,27 @@ function buildCategoriesViewHtml(categories,
   return finalHtml;
 }
 
+// return a random number between min and max (inclusive)
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * max) + min;
+}
 
+// Builds HTML for the about page snippet with random star rating
+function buildAndShowAboutSnippetHTML (about) {
+  var starRating = getRandomNumber(1,5);
+  for (var index = 1; index <= 5; index++) {
+    if (index <= starRating) {
+      // insert a "filled-in" star
+      about = insertProperty(about, "star-placeholder-" + index, "fa fa-star");
+    } else {
+      // insert a "hollow" star
+      about = insertProperty(about, "star-placeholder-" + index, "fa fa-star-o");
+    }
+  }
+  // add the bonus/optional star rating text
+  about = insertProperty(about, "star-text-placeholder", starRating + "-star rating");
+  insertHtml("#main-content", about);
+}
 
 // Builds HTML for the single category page based on the data
 // from the server
