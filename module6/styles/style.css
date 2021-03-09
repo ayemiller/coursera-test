@@ -1,0 +1,20 @@
+.message { 
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.note {
+  font-size: 0.75em;
+}
+
+.normal {
+  border-color: green;
+  border-width: medium;
+  color: green;
+}
+
+.error {
+  border-color: red;
+  border-width: medium;
+  color: red;
+}
