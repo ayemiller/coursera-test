@@ -1,0 +1,5 @@
+
+<li class="list-group-item" ng-repeat="item in controller.list">
+  {{ item.name }}, {{ item.short_name }}, {{ item.description }} <button class="btn" ng-click="controller.onRemove({index: $index})">Don't want this one!</button>
+</li>
+<li class="list-group-item" ng-if="controller.noItemsFound()">Nothing found</li>
