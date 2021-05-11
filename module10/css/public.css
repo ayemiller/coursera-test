@@ -182,4 +182,11 @@ h3.menu-item-title {
     float: left;
     width: 100%;
   }
+
+  #newsletterSignUpForm input {
+    color:black;
+  }
+  .no-left-margin {
+    margin-left: 0;
+  }
 }

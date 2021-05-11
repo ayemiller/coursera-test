@@ -1,0 +1,35 @@
+<div ng-if="myInfoCtrl.myInfo.signedUp">
+    <table>
+        <tr>
+            <td>First Name:</td>
+            <td>{{ myInfoCtrl.myInfo.firstName }}</td>
+        </tr>
+        <tr>
+            <td>Last Name:</td>
+            <td>{{ myInfoCtrl.myInfo.lastName }}</td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>{{ myInfoCtrl.myInfo.email }}</td>
+        </tr>
+        <tr>
+            <td>Phone:</td>
+            <td>{{ myInfoCtrl.myInfo.phone }}</td>
+        </tr>
+    </table>
+    <div class="menu-item-tile">
+        <div class="menu-item-photo no-left-margin">
+            <div>{{ myInfoCtrl.myInfo.favoriteShortName.short_name }}</div>
+            <img class="img-responsive" width="250" height="150" ng-src="{{myInfoCtrl.basePath}}/images/{{myInfoCtrl.myInfo.favoriteShortName.short_name}}.jpg" alt="{{myInfoCtrl.myInfo.favoriteDish.name}}" />
+        
+        </div>
+        <div class="menu-item-description">
+            <h3 class="menu-item-title">{{ myInfoCtrl.myInfo.favoriteShortName.name }}</h3>
+            <p class="menu-item-details">{{ myInfoCtrl.myInfo.favoriteShortName.description }}</p>
+        </div>
+    </div>
+</div>
+
+<div ng-if="!myInfoCtrl.myInfo.signedUp">
+    <span>Not Signed Up Yet. <a ui-sref="public.newsletter-sign-up">Sign up Now!</a></span>
+</div>

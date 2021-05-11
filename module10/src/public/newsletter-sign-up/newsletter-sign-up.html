@@ -1,0 +1,65 @@
+<form id="newsletterSignUpForm" name="newsletterSignUpForm" novalidate>
+    <input type="text" name="firstName" placeholder="First Name"
+        ng-model="newsletterSignUpCtrl.firstName"
+        required
+        minlength="1"
+        ng-maxlength="30">
+        <span
+            ng-if="(newsletterSignUpForm.firstName.$error.minlength || newsletterSignUpForm.firstName.$error.required) && newsletterSignUpForm.firstName.$touched">First name must be at least 1 character.
+        </span>
+        <span ng-if="newsletterSignUpForm.$error.maxlength && newsletterSignUpForm.firstName.$touched">
+            First name must not be longer than 30 characters.
+        </span>
+        <br>
+    
+    <input type="text" name="lastName" placeholder="Last Name"
+        ng-model="newsletterSignUpCtrl.lastName"
+        required
+        minlength="1"
+        ng-maxlength="30">
+        <span
+            ng-if="(newsletterSignUpForm.lastName.$error.minlength || newsletterSignUpForm.lastName.$error.required) && newsletterSignUpForm.lastName.$touched">Last name must be at least 1 character.
+        </span>
+        <span ng-if="newsletterSignUpForm.$error.maxlength && newsletterSignUpForm.lastName.$touched">
+            Last name must not be longer than 30 characters.
+        </span>
+        <br>
+    
+    <input type="email" name="email" placeholder="Email"
+        ng-model="newsletterSignUpCtrl.email"
+        required
+        minlength="1"
+        ng-maxlength="30">
+        <span ng-if="newsletterSignUpForm.email.$invalid && newsletterSignUpForm.email.$touched">
+            Must be a valid email address: handle@domain format.
+        </span>
+        <br>
+    
+    <input type="text" name="phone" placeholder="Phone ###-###-####"
+        ng-model="newsletterSignUpCtrl.phone"
+        required
+        pattern="(\d{3})-(\d{3})-(\d{4})">
+        <span ng-if="newsletterSignUpForm.phone.$invalid && newsletterSignUpForm.phone.$touched">
+            Phone must be in the format ###-###-####.
+        </span>
+        <br>
+    
+    <input type="text" name="favoriteShortName" placeholder="Favorite Menu Item Number"
+        ng-model="newsletterSignUpCtrl.favoriteShortName"
+        ng-blur="newsletterSignUpCtrl.checkIfShortNameValid()">
+        <span ng-if="!newsletterSignUpCtrl.isFavoriteValid">
+            Phone must be in the format ###-###-####.
+        </span>
+        <br>
+    
+    <button
+        ng-disabled="newsletterSignUpForm.$invalid" 
+        ng-click="newsletterSignUpCtrl.submit()">Submit</button>
+    
+    <span ng-if="newsletterSignUpCtrl.signedUp">Your information has been saved</span>
+
+    <div style="margin-top: 10px;">
+        Form valid? {{ newsletterSignUpForm.$valid }}
+    </div>
+    
+</form>
