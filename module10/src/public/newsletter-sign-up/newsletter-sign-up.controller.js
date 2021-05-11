@@ -6,15 +6,14 @@
 
     function NewsletterSignUpController($http, ApiPath, MyInfoService) {
         var ctrl = this;
+        ctrl.signedUp = false;
         var myInfo = MyInfoService.getMyInfo();
         ctrl.firstName = myInfo.firstName;
         ctrl.lastName = myInfo.lastName;
         ctrl.email = myInfo.email;
         ctrl.phone = myInfo.phone;
-        ctrl.favoriteShortName = myInfo.favoriteShortName;
-
         ctrl.favoriteShortName = myInfo.signedUp ? myInfo.favoriteShortName.short_name : null;
-        ctrl.favoriteShortName = myInfo.favoriteShortName.short_name;
+
         ctrl.isFavoriteValid = false;
         
         ctrl.checkIfShortNameValid = function() {
@@ -30,7 +29,7 @@
         ctrl.submit = function() {
             var onSuccess = function (response) {
                 ctrl.signedUp = true;
-                MyInfoService.saveMyInfo(ctrl.firstName, ctrl.lastName, ctrl.email, ctrl.phone, ctrl.favoriteShortName);
+                MyInfoService.saveMyInfo(ctrl.firstName, ctrl.lastName, ctrl.email, ctrl.phone, response.data);
                 ctrl.isFavoriteValid = true;
             };
             var onError = function (response) {

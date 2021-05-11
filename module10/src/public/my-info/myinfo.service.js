@@ -22,6 +22,7 @@
 			service.myinfo.email = email;
 			service.myinfo.phone = phone;
 			service.myinfo.favoriteShortName = favoriteShortName;
+			service.myinfo.signedUp = true;
 		};
 
 		service.getMyInfo = function () {
