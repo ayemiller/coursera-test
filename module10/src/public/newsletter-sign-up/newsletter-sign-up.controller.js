@@ -13,8 +13,7 @@
         ctrl.email = myInfo.email;
         ctrl.phone = myInfo.phone;
         ctrl.favoriteShortName = myInfo.signedUp ? myInfo.favoriteShortName.short_name : null;
-
-        ctrl.isFavoriteValid = false;
+        ctrl.isFavoriteValid = true;
         
         ctrl.checkIfShortNameValid = function() {
             var onSuccess = function (response) {
